@@ -1,0 +1,20 @@
+version: "3"
+services:  
+  nginx:
+    image: testeweb.azurecr.io/testeweb/nginx
+    depends_on:
+      - demo
+      - frontend
+    restart: always
+    build:     
+      context: ./nginx
+    ports:
+      - "80:80"
+  demo:
+    image: testeweb.azurecr.io/testeweb/demo
+    build:      
+      context: ./demo  
+  frontend:
+    image: testeweb.azurecr.io/testeweb/frontend
+    build:     
+      context: ./frontend
